@@ -4,22 +4,26 @@ using System.Collections;
 
 public class TabManager : MonoBehaviour {
 
-	public GameObject panelsParent;
+	public GameObject panelParent;
+	CanvasGroup[] cgArray;
 
 	void Start () {		
+		cgArray = panelParent.GetComponentsInChildren<CanvasGroup> ();
 		SwitchMap ();
 	}
 
 	void DeactivateAll() {
-		foreach (Transform child in panelsParent.transform) {
-			child.gameObject.SetActive(false);
+		foreach (CanvasGroup cg in cgArray) {
+			print("Deactivating");
+			cg.alpha = 0;
 		}
 	}
 
 	void Activate(string name) {
-		foreach (Transform child in panelsParent.transform) {
-			if(child.name == name) {
-				child.gameObject.SetActive(true);
+		foreach (CanvasGroup cg in cgArray) {
+			if(cg.gameObject.name == name) {
+				print("Activating");
+				cg.alpha = 1;
 			}
 		}
 	}
