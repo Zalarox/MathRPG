@@ -14,7 +14,6 @@ public class TabManager : MonoBehaviour {
 
 	void DeactivateAll() {
 		foreach (CanvasGroup cg in cgArray) {
-			print("Deactivating");
 			cg.alpha = 0;
 		}
 	}
@@ -22,7 +21,6 @@ public class TabManager : MonoBehaviour {
 	void Activate(string name) {
 		foreach (CanvasGroup cg in cgArray) {
 			if(cg.gameObject.name == name) {
-				print("Activating");
 				cg.alpha = 1;
 			}
 		}
